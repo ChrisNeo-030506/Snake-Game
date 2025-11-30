@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <h1>Snake Game</h1>
+    <div id="gameContainer">
+        <div id="leftColumn">
+            <div id="statsBoard">
+                <h2>Current</h2>
+                <p>Score: <span id="score">0</span></p>
+                <p>Length: <span id="length">3</span></p>
+                <p>Moves: <span id="moves">0</span></p>
+                <p>Time: <span id="time">0s</span></p>
+            </div>
+            <div id="bestBoard">
+                <h2>Best Records</h2>
+                <p>Score: <span id="bestScore">0</span></p>
+                <p>Length: <span id="bestLength">3</span></p>
+                <p>Moves: <span id="bestMoves">0</span></p>
+                <p>Time: <span id="bestTime">0s</span></p>
+            </div>
+        </div>
+        <div id="centerColumn">
+            <canvas id="gameCanvas" width="800" height="500"></canvas>
+        </div>
+        <div id="rightColumn">
+            <div id="contactBoard">
+                <h2>Contact</h2>
+                <p>Author: ChrisNeo-030506</p>
+                <p>Github: 
+                    <a id="githubLink" href="https://github.com/ChrisNeo-030506" target="_blank">Click Here</a>
+                </p>
+            </div>
+            <div id="controlsArea">
+                <button id="pauseBtn">Pause</button>
+                <button id="restartBtn">Restart</button>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>

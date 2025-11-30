@@ -1,0 +1,177 @@
+body{
+    background-color: rgb(0, 114, 63);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-family: Arial;
+    margin-top: 30px;
+}
+
+h1 {
+    margin-bottom: 18px;
+    font-size: 36px;
+}
+
+#gameContainer {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+#leftColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#centerColumn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#rightColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+#gameCanvas{
+    background-color: black;
+    border: 2px solid white;
+}
+
+#statsBoard {
+    background: linear-gradient(145deg, #111, #222);
+    padding: 18px;
+    border-radius: 12px;
+
+    border: 2px solid #00ffe5;
+    box-shadow: 0 0 10px #00ffe5, 0 0 20px #00e0ff, 0 0 35px #00b7ff;
+
+    min-width: 180px;
+    font-family: "Courier New", monospace;
+    letter-spacing: 1px;
+}
+
+#statsBoard h2 {
+    text-align: center;
+    color: #00eaff;
+    font-size: 22px;
+    text-shadow: 0 0 12px #00dfff;
+    border-bottom: 1px solid #00eaff;
+    padding-bottom: 8px;
+}
+
+#statsBoard p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+#statsBoard span {
+    color: #00f6ff;
+    font-weight: bold;
+    text-shadow: 0 0 15px #00eaff;
+}
+
+#bestBoard {
+    background: linear-gradient(145deg, #221, #332);
+    padding: 18px;
+    border-radius: 12px;
+
+    border: 2px solid #ffdd44;
+    box-shadow: 0 0 10px #ffdd44, 0 0 20px #ffbb22, 0 0 35px #ffaa00;
+
+    min-width: 180px;
+    font-family: "Courier New", monospace;
+    letter-spacing: 1px;
+}
+
+#bestBoard h2 {
+    text-align: center;
+    color: #ffdd55;
+    font-size: 22px;
+    text-shadow: 0 0 12px #ffcc33;
+    border-bottom: 1px solid #ffdd55;
+    padding-bottom: 8px;
+}
+
+#bestBoard p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+#bestBoard span {
+    color: #ffe680;
+    font-weight: bold;
+    text-shadow: 0 0 15px #ffdd55;
+}
+
+#contactBoard {
+    background: linear-gradient(145deg, #112, #223);
+    padding: 18px;
+    border-radius: 12px;
+
+    border: 2px solid #66ccff;
+    box-shadow: 0 0 10px #66ccff, 0 0 20px #3399ff;
+
+    min-width: 200px;
+    font-family: "Courier New", monospace;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+#contactBoard h2 {
+    text-align: center;
+    color: #66ccff;
+    border-bottom: 1px solid #66ccff;
+    padding-bottom: 8px;
+}
+
+#contactBoard p {
+    font-size: 16px;
+    margin: 6px 0;
+}
+
+#contactBoard a {
+    color: #88e0ff;
+    text-decoration: underline;
+}
+
+#controlsArea {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-top: 6px;
+}
+
+#pauseBtn {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #008cff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px;
+}
+
+#pauseBtn:hover { background-color: #0072cc; }
+#pauseBtn:active { transform: scale(0.95); }
+
+#restartBtn {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px;
+}
+
+#restartBtn:hover { background-color: #e64a19; }
+#restartBtn:active { transform: scale(0.95); }
