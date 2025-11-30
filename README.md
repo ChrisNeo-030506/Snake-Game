@@ -8,4 +8,4 @@
 - You can click the **Pause** or **Continue** button to pause or resume the game  
 - You can click the **Restart** button to start a new game
 
-## 🕹️ Play directly in your browser [Click here to play](https://chrisneo-030506.github.io/Snake-Game/)
+## 🕹️ Play directly in your browser: [Click here to play](https://chrisneo-030506.github.io/Snake-Game/)
