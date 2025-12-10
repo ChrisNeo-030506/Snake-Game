@@ -1,47 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>                                                                                                     <!--使用 HTML5 标准-->
+<html lang="en">                                                                                                    <!--网页主要语言-->
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Snake Game</title>
-    <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8"/>                                                                                         <!--使用 UTF-8 编码-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>                                         <!--移动端的缩放比例-->
+    <title>Snake Game</title>                                                                                       <!--标签页名字-->
+    <link rel="stylesheet" href="style.css"/>                                                                       <!--载入CSS文件-->
 </head>
 <body>
-    <h1>Snake Game</h1>
-    <div id="gameContainer">
-        <div id="leftColumn">
-            <div id="statsBoard">
-                <h2>Current</h2>
-                <p>Score: <span id="score">0</span></p>
-                <p>Length: <span id="length">3</span></p>
-                <p>Moves: <span id="moves">0</span></p>
-                <p>Time: <span id="time">0s</span></p>
+    <h1>Snake Game</h1>                                                                                             <!--Heading 1-->
+    <div id="gameContainer">                                                                                        <!--父容器：游戏容器-->
+        <div id="leftColumn">                                                                                       <!--子容器：左侧栏-->
+            <div id="current">                                                                                      <!--子子容器：当前-->
+                <h2>Current</h2>                                                                                    <!--Heading 2-->
+                <p>Score: <span id="score">0</span></p>                                                             <!--当前游戏得分-->
+                <p>Length: <span id="length">3</span></p>                                                           <!--当前蛇的长度-->
+                <p>Moves: <span id="moves">0</span></p>                                                             <!--当前玩家移动次数-->
+                <p>Time: <span id="time">0s</span></p>                                                              <!--当前游戏时间-->
             </div>
-            <div id="bestBoard">
-                <h2>Best Records</h2>
-                <p>Score: <span id="bestScore">0</span></p>
-                <p>Length: <span id="bestLength">3</span></p>
-                <p>Moves: <span id="bestMoves">0</span></p>
-                <p>Time: <span id="bestTime">0s</span></p>
+            <div id="bestRecords">                                                                                  <!--子子容器：最佳记录-->
+                <h2>Best Records</h2>                                                                               <!--Heading 2-->
+                <p>Score: <span id="bestScore">0</span></p>                                                         <!--最佳游戏得分-->
+                <p>Length: <span id="bestLength">3</span></p>                                                       <!--最佳蛇的长度-->
+                <p>Moves: <span id="bestMoves">0</span></p>                                                         <!--最佳玩家移动次数-->
+                <p>Time: <span id="bestTime">0s</span></p>                                                          <!--最佳游戏时间-->
             </div>
         </div>
-        <div id="centerColumn">
-            <canvas id="gameCanvas" width="800" height="500"></canvas>
+        <div id="centerColumn">                                                                                     <!--子容器：中间栏-->
+            <canvas id="gameCanvas" width="800" height="500"></canvas>                                              <!--游戏画布-->
         </div>
-        <div id="rightColumn">
-            <div id="contactBoard">
-                <h2>Contact</h2>
-                <p>Author: ChrisNeo-030506</p>
-                <p>Github: 
-                    <a id="githubLink" href="https://github.com/ChrisNeo-030506" target="_blank">Click Here</a>
+        <div id="rightColumn">                                                                                      <!--子容器：右侧栏-->
+            <div id="contactBoard">                                                                                 <!--子子容器：联系板-->
+                <h2>Contact</h2>                                                                                    <!--Heading 2-->
+                <p>Author: ChrisNeo-030506</p>                                                                      <!--作者-->
+                <p>Github:
+                    <a id="githubLink" href="https://github.com/ChrisNeo-030506" target="_blank">Click Here</a>     <!--GitHub超链接-->
                 </p>
             </div>
-            <div id="controlsArea">
-                <button id="pauseBtn">Pause</button>
-                <button id="restartBtn">Restart</button>
+            <div id="controlsArea">                                                                                 <!--子子容器：控制区域-->
+                <button id="pauseBtn">Pause</button>                                                                <!--暂停按钮-->
+                <button id="restartBtn">Restart</button>                                                            <!--重启按钮-->
             </div>
         </div>
     </div>
-    <script src="game.js"></script>
+    <script src="game.js"></script>                                                                                 <!--载入JavaScript文件-->>
 </body>
 </html>
