@@ -25,6 +25,8 @@ let bestScore = Number(localStorage.getItem("bestScore")) || 0;
 let bestLength = Number(localStorage.getItem("bestLength")) || 3;
 let bestMoves = Number(localStorage.getItem("bestMoves")) || 0;
 let bestTime = Number(localStorage.getItem("bestTime")) || 0;
+let nextDirection = { dx: box, dy: 0 };
+let directionChanged = false;
 
 bestScoreEl.textContent = bestScore;
 bestLengthEl.textContent = bestLength;
@@ -37,10 +39,26 @@ let snake = [
     { x: 160, y: 200 }
 ];
 
-let food = {
-    x: Math.floor(Math.random() * (canvas.width / box)) * box,
-    y: Math.floor(Math.random() * (canvas.height / box)) * box
-};
+function generateFood() {
+    let newFood;
+    let isOnSnake;
+    do {
+        isOnSnake = false;
+        newFood = {
+            x: Math.floor(Math.random() * (canvas.width / box)) * box,
+            y: Math.floor(Math.random() * (canvas.height / box)) * box
+        };
+        for (let segment of snake) {
+            if (segment.x === newFood.x && segment.y === newFood.y) {
+                isOnSnake = true;
+                break;
+            }
+        }
+    } while (isOnSnake);
+    return newFood;
+}
+
+let food = generateFood();
 
 function drawSnake() {
     snake.forEach((part) => {
@@ -61,13 +79,20 @@ function clearCanvas() {
 
 function endGame() {
     isGameOver = true;
-
     clearInterval(gameLoopId);
     clearInterval(timeInterval);
-
     const finalTime = Math.floor((Date.now() - startTime) / 1000);
-
+    let isNewBest = false;
     if (score > bestScore) {
+        isNewBest = true;
+    } else if (score === bestScore && bestScore > 0) {
+        if (moves < bestMoves) {
+            isNewBest = true;
+        } else if (moves === bestMoves && finalTime < bestTime) {
+            isNewBest = true;
+        }
+    }
+    if (isNewBest) {
         bestScore = score;
         bestLength = snake.length;
         bestMoves = moves;
@@ -83,9 +108,7 @@ function endGame() {
         bestMovesEl.textContent = bestMoves;
         bestTimeEl.textContent = bestTime + "s";
     }
-
     drawOverlay();
-
     ctx.fillStyle = "white";
     ctx.font = "48px Arial";
     ctx.textAlign = "center";
@@ -100,48 +123,41 @@ function drawOverlay() {
 
 function gameLoop() {
     if (isPaused || isGameOver) return;
-
-    clearCanvas();
-    drawFood();
+    dx = nextDirection.dx;
+    dy = nextDirection.dy;
+    directionChanged = false;
     moveSnake();
-
     let head = snake[0];
-
     if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
         endGame();
         return;
     }
-
-    drawSnake();
-
     for (let i = 1; i < snake.length; i++) {
         if (snake[i].x === head.x && snake[i].y === head.y) {
             endGame();
             return;
         }
     }
+    clearCanvas();
+    drawFood();
+    drawSnake();
 }
 
 function changeDirection(event) {
     if (isPaused || isGameOver) return;
-
+    if (directionChanged) return;
     const key = event.key;
-
     const goingUp = dy === -box;
     const goingDown = dy === box;
     const goingLeft = dx === -box;
     const goingRight = dx === box;
-
-    let newDx = dx;
-    let newDy = dy;
-
+    let newDx = nextDirection.dx;
+    let newDy = nextDirection.dy;
     if (key === "ArrowUp" && !goingDown) { newDx = 0; newDy = -box; }
     if (key === "ArrowDown" && !goingUp) { newDx = 0; newDy = box; }
     if (key === "ArrowLeft" && !goingRight) { newDx = -box; newDy = 0; }
     if (key === "ArrowRight" && !goingLeft) { newDx = box; newDy = 0; }
-
-    if (newDx === dx && newDy === dy) return;
-
+    if (newDx === nextDirection.dx && newDy === nextDirection.dy) return;
     const changedAxis =
         (lastDirection.dx !== newDx) || (lastDirection.dy !== newDy);
 
@@ -149,10 +165,9 @@ function changeDirection(event) {
         moves++;
         movesEl.textContent = moves;
     }
-
-    dx = newDx;
-    dy = newDy;
-    lastDirection = { dx, dy };
+    nextDirection = { dx: newDx, dy: newDy };
+    lastDirection = { dx: newDx, dy: newDy };
+    directionChanged = true;
 }
 
 function updateTime() {
@@ -166,19 +181,13 @@ function moveSnake() {
         x: snake[0].x + dx,
         y: snake[0].y + dy
     };
-
     if (newHead.x === food.x && newHead.y === food.y) {
         score++;
         scoreEl.textContent = score;
-
-        food = {
-            x: Math.floor(Math.random() * (canvas.width / box)) * box,
-            y: Math.floor(Math.random() * (canvas.height / box)) * box
-        };
+        food = generateFood();
     } else {
         snake.pop();
     }
-
     snake.unshift(newHead);
     lengthEl.textContent = snake.length;
 }
@@ -189,42 +198,31 @@ function resetGame() {
         { x: 180, y: 200 },
         { x: 160, y: 200 }
     ];
-
     dx = box;
     dy = 0;
+    nextDirection = { dx: box, dy: 0 };
     lastDirection = { dx: box, dy: 0 };
-
-    food = {
-        x: Math.floor(Math.random() * (canvas.width / box)) * box,
-        y: Math.floor(Math.random() * (canvas.height / box)) * box
-    };
-
+    directionChanged = false;
+    food = generateFood();
     clearCanvas();
     clearInterval(gameLoopId);
-
     isGameOver = false;
-
     score = 0;
     moves = 0;
     startTime = Date.now();
-
     scoreEl.textContent = score;
     movesEl.textContent = moves;
     timeEl.textContent = "0s";
     lengthEl.textContent = snake.length;
-
     clearInterval(timeInterval);
     timeInterval = setInterval(updateTime, 1000);
-
     gameLoopId = setInterval(gameLoop, 200);
-
     isPaused = false;
     pauseBtn.textContent = "Pause";
 }
 
 function togglePause() {
     if (isGameOver) return;
-
     if (!isPaused) {
         clearInterval(gameLoopId);
         clearInterval(timeInterval);
@@ -241,8 +239,6 @@ function togglePause() {
 document.addEventListener("keydown", changeDirection);
 restartBtn.addEventListener("click", resetGame);
 pauseBtn.addEventListener("click", togglePause);
-
 restartBtn.style.display = "block";
-
 let gameLoopId = setInterval(gameLoop, 200);
 timeInterval = setInterval(updateTime, 1000);
