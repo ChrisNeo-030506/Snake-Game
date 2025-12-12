@@ -1,177 +1,170 @@
-body{
-    background-color: rgb(0, 114, 63);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    font-family: Arial;
-    margin-top: 30px;
+body{                                                                             /*网页全局样式*/
+    background-color: rgb(0, 114, 63);                                          /*背景颜色*/
+    display: flex;                                                                /*转换成 Flex 容器*/
+    flex-direction: column;                                                       /*Flex 物件垂直排列*/
+    align-items: center;                                                          /*Flex 物件水平置中*/
+    color: white;                                                               /*文字颜色*/
+    font-family: Arial;                                                           /*字体*/
+    margin-top: 30px;                                                             /*顶部外边距*/
 }
 
-h1 {
-    margin-bottom: 18px;
-    font-size: 36px;
+h1 {                                                                              /*Heading 1样式*/
+    margin-bottom: 18px;                                                          /*底部外边距*/
+    font-size: 36px;                                                              /*字体大小*/
 }
 
-#gameContainer {
-    display: flex;
-    align-items: flex-start;
-    gap: 30px;
+#gameContainer {                                                                  /*游戏容器样式*/
+    display: flex;                                                                /*转换成 Flex 容器*/
+    align-items: flex-start;                                                      /*Flex 物件顶部对齐*/
+    gap: 30px;                                                                    /*子容器间距*/
 }
 
-#leftColumn {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+#leftColumn {                                                                     /*左侧栏样式*/
+    display: flex;                                                                /*转换成 Flex 容器*/
+    flex-direction: column;                                                       /*Flex 物件垂直排列*/
+    gap: 20px;                                                                    /*子容器间距*/
 }
 
-#centerColumn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#centerColumn {                                                                   /*中间栏样式*/
+    display: flex;                                                                /*转换成 Flex 容器*/
+    align-items: center;                                                          /*Flex 物件垂直居中*/
+    justify-content: center;                                                      /*Flex 物件水平居中*/
 }
 
-#rightColumn {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    align-items: center;
+#rightColumn {                                                                    /*右侧栏样式*/
+    display: flex;                                                                /*转换成 Flex 容器*/
+    flex-direction: column;                                                       /*Flex 物件垂直排列*/
+    gap: 20px;                                                                    /*子容器间距*/
+    align-items: center;                                                          /*Flex 物件水平居中*/
 }
 
-#gameCanvas{
-    background-color: black;
-    border: 2px solid white;
+#gameCanvas{                                                                      /*游戏画布样式*/
+    background-color: black;                                                    /*背景颜色*/
+    border: 2px solid white;                                                    /*边框*/
 }
 
-#statsBoard {
-    background: linear-gradient(145deg, #111, #222);
-    padding: 18px;
-    border-radius: 12px;
-
-    border: 2px solid #00ffe5;
-    box-shadow: 0 0 10px #00ffe5, 0 0 20px #00e0ff, 0 0 35px #00b7ff;
-
-    min-width: 180px;
-    font-family: "Courier New", monospace;
-    letter-spacing: 1px;
+#current {                                                                        /*当前计分板样式*/
+    background: linear-gradient(145deg, #111, #222);                          /*背景颜色*/
+    padding: 18px;                                                                /*内边距*/    
+    border-radius: 12px;                                                          /*圆角边框*/
+    border: 2px solid #00ffe5;                                                  /*边框颜色*/
+    box-shadow: 0 0 10px #00ffe5, 0 0 20px #00e0ff, 0 0 35px #00b7ff;       /*发光效果*/
+    min-width: 180px;                                                             /*文字框最小宽度*/
+    font-family: "Courier New", monospace;                                        /*字体*/
+    letter-spacing: 1px;                                                          /*字母间距*/
 }
 
-#statsBoard h2 {
-    text-align: center;
-    color: #00eaff;
-    font-size: 22px;
-    text-shadow: 0 0 12px #00dfff;
-    border-bottom: 1px solid #00eaff;
-    padding-bottom: 8px;
+#current h2 {                                                                     /*当前计分板的标题样式*/
+    text-align: center;                                                           /*标题居中*/    
+    color: #00eaff;                                                             /*标题颜色*/               
+    font-size: 22px;                                                              /*标题字体大小*/
+    text-shadow: 0 0 12px #00dfff;                                              /*标题发光效果*/
+    border-bottom: 1px solid #00eaff;                                           /*标题下边线*/
+    padding-bottom: 8px;                                                          /*标题下边距*/
 }
 
-#statsBoard p {
-    font-size: 18px;
-    margin: 10px 0;
+#current p {                                                                      /*当前计分板的段落样式*/
+    font-size: 18px;                                                              /*段落字体大小*/
+    margin: 10px 0;                                                               /*段落上下外边距*/
 }
 
-#statsBoard span {
-    color: #00f6ff;
-    font-weight: bold;
-    text-shadow: 0 0 15px #00eaff;
+#current span {                                                                   /*当前计分板的数值样式*/
+    color: #00f6ff;                                                             /*数值颜色*/
+    font-weight: bold;                                                            /*数值加粗*/
+    text-shadow: 0 0 15px #00eaff;                                              /*数值发光效果*/
 }
 
-#bestBoard {
-    background: linear-gradient(145deg, #221, #332);
-    padding: 18px;
-    border-radius: 12px;
-
-    border: 2px solid #ffdd44;
-    box-shadow: 0 0 10px #ffdd44, 0 0 20px #ffbb22, 0 0 35px #ffaa00;
-
-    min-width: 180px;
-    font-family: "Courier New", monospace;
-    letter-spacing: 1px;
+#bestRecords {                                                                    /*最佳记录板样式*/
+    background: linear-gradient(145deg, #221, #332);                          /*背景颜色*/
+    padding: 18px;                                                                /*内边距*/
+    border-radius: 12px;                                                          /*圆角边框*/
+    border: 2px solid #ffdd44;                                                  /*边框颜色*/
+    box-shadow: 0 0 10px #ffdd44, 0 0 20px #ffbb22, 0 0 35px #ffaa00;       /*发光效果*/
+    min-width: 180px;                                                             /*文字框最小宽度*/
+    font-family: "Courier New", monospace;                                        /*字体*/
+    letter-spacing: 1px;                                                          /*字母间距*/
 }
 
-#bestBoard h2 {
-    text-align: center;
-    color: #ffdd55;
-    font-size: 22px;
-    text-shadow: 0 0 12px #ffcc33;
-    border-bottom: 1px solid #ffdd55;
-    padding-bottom: 8px;
+#bestRecords h2 {                                                                 /*最佳记录板的标题样式*/
+    text-align: center;                                                           /*标题居中*/
+    color: #ffdd55;                                                             /*标题颜色*/
+    font-size: 22px;                                                              /*标题字体大小*/
+    text-shadow: 0 0 12px #ffcc33;                                              /*标题发光效果*/
+    border-bottom: 1px solid #ffdd55;                                           /*标题下边线*/
+    padding-bottom: 8px;                                                          /*标题下边距*/
 }
 
-#bestBoard p {
-    font-size: 18px;
-    margin: 10px 0;
+#bestRecords p {                                                                  /*最佳记录板的段落样式*/
+    font-size: 18px;                                                              /*段落字体大小*/
+    margin: 10px 0;                                                               /*段落上下外边距*/
 }
 
-#bestBoard span {
-    color: #ffe680;
-    font-weight: bold;
-    text-shadow: 0 0 15px #ffdd55;
+#bestRecords span {                                                               /*最佳记录板的数值样式*/
+    color: #ffe680;                                                             /*数值颜色*/
+    font-weight: bold;                                                            /*数值加粗*/
+    text-shadow: 0 0 15px #ffdd55;                                              /*数值发光效果*/
 }
 
-#contactBoard {
-    background: linear-gradient(145deg, #112, #223);
-    padding: 18px;
-    border-radius: 12px;
-
-    border: 2px solid #66ccff;
-    box-shadow: 0 0 10px #66ccff, 0 0 20px #3399ff;
-
-    min-width: 200px;
-    font-family: "Courier New", monospace;
-    letter-spacing: 1px;
-    text-align: center;
+#contactBoard {                                                                   /*联系板样式*/
+    background: linear-gradient(145deg, #112, #223);                          /*背景颜色*/
+    padding: 18px;                                                                /*内边距*/
+    border-radius: 12px;                                                          /*圆角边框*/
+    border: 2px solid #66ccff;                                                  /*边框颜色*/
+    box-shadow: 0 0 10px #66ccff, 0 0 20px #3399ff;                           /*发光效果*/
+    min-width: 200px;                                                             /*文字框最小宽度*/
+    font-family: "Courier New", monospace;                                        /*字体*/
+    letter-spacing: 1px;                                                          /*字母间距*/
+    text-align: center;                                                           /*文字居中*/
 }
 
-#contactBoard h2 {
-    text-align: center;
-    color: #66ccff;
-    border-bottom: 1px solid #66ccff;
-    padding-bottom: 8px;
+#contactBoard h2 {                                                                /*联系板的标题样式*/
+    text-align: center;                                                           /*标题居中*/
+    color: #66ccff;                                                             /*标题颜色*/
+    border-bottom: 1px solid #66ccff;                                           /*标题下边线*/
+    padding-bottom: 8px;                                                          /*标题下边距*/
 }
 
-#contactBoard p {
-    font-size: 16px;
-    margin: 6px 0;
+#contactBoard p {                                                                 /*联系板的段落样式*/
+    font-size: 16px;                                                              /*段落字体大小*/
+    margin: 6px 0;                                                                /*段落上下外边距*/
 }
 
-#contactBoard a {
-    color: #88e0ff;
-    text-decoration: underline;
+#contactBoard a {                                                                 /*联系板的链接样式*/
+    color: #88e0ff;                                                             /*链接颜色*/
+    text-decoration: underline;                                                   /*链接下划线*/
 }
 
-#controlsArea {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    margin-top: 6px;
+#controlsArea {                                                                   /*控制区域样式*/
+    display: flex;                                                                /*转换成 Flex 容器*/
+    flex-direction: column;                                                       /*Flex 物件垂直排列*/
+    gap: 10px;                                                                    /*子容器间距*/
+    align-items: center;                                                          /*Flex 物件水平居中*/
+    margin-top: 6px;                                                              /*顶部外边距*/
 }
 
-#pauseBtn {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #008cff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 200px;
+#pauseBtn {                                                                       /*暂停按钮样式*/
+    padding: 10px 20px;                                                           /*内边距*/
+    font-size: 18px;                                                              /*字体大小*/
+    background-color: #008cff;                                                  /*背景颜色*/
+    color: white;                                                               /*文字颜色*/
+    border: none;                                                                 /*无边框*/
+    border-radius: 5px;                                                           /*圆角边框*/
+    cursor: pointer;                                                              /*鼠标变成手形指针*/
+    width: 200px;                                                                 /*按钮宽度*/
 }
 
-#pauseBtn:hover { background-color: #0072cc; }
-#pauseBtn:active { transform: scale(0.95); }
-
-#restartBtn {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #ff5722;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 200px;
+#restartBtn {                                                                     /*重启按钮样式*/
+    padding: 10px 20px;                                                           /*内边距*/
+    font-size: 18px;                                                              /*字体大小*/
+    background-color: #ff5722;                                                  /*背景颜色*/
+    color: white;                                                               /*文字颜色*/
+    border: none;                                                                 /*无边框*/
+    border-radius: 5px;                                                           /*圆角边框*/
+    cursor: pointer;                                                              /*鼠标变成手形指针*/
+    width: 200px;                                                                 /*按钮宽度*/
 }
 
-#restartBtn:hover { background-color: #e64a19; }
-#restartBtn:active { transform: scale(0.95); }
+#pauseBtn:hover { background-color: #0072cc; }                                  /*暂停按钮悬停效果*/
+#pauseBtn:active { transform: scale(0.95); }                                      /*暂停按钮按下效果*/
+#restartBtn:hover { background-color: #e64a19; }                                /*重启按钮悬停效果*/
+#restartBtn:active { transform: scale(0.95); }                                    /*重启按钮按下效果*/
